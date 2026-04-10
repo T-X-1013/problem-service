@@ -1,0 +1,36 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# Python tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Local generated files
+services/extract_service/result.json
+
+# Local package files / offline wheels
+torch-cu128/
+*.whl
+
+# OS files
+.DS_Store
+Thumbs.db
