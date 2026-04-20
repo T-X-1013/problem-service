@@ -42,23 +42,31 @@ E:\hangdong_pros\problem-service\services\extract_service
 
 - 代码放在 `E:` 盘
 - Python 虚拟环境放在 `C:` 盘
+- `extract_service` 和 `classify_service` 共用同一个虚拟环境
 
 创建虚拟环境：
 
 ```powershell
-python -m venv C:\Users\63338\venvs\problem-extract-service
+python -m venv C:\Users\63338\venvs\problem-python-service
 ```
 
 激活虚拟环境：
 
 ```powershell
-C:\Users\63338\venvs\problem-extract-service\Scripts\Activate.ps1
+C:\Users\63338\venvs\problem-python-service\Scripts\Activate.ps1
 ```
 
 进入子服务目录并安装依赖：
 
 ```powershell
 cd E:\hangdong_pros\problem-service\services\extract_service
+pip install -r requirements.txt
+```
+
+如果这个虚拟环境还要同时运行分类服务，再额外执行一次：
+
+```powershell
+cd E:\hangdong_pros\problem-service\services\classify_service
 pip install -r requirements.txt
 ```
 
@@ -113,7 +121,7 @@ E:\models\Qwen3-8B
 适合先和 Java 联调，不依赖真实模型。
 
 ```powershell
-C:\Users\63338\venvs\problem-extract-service\Scripts\Activate.ps1
+C:\Users\63338\venvs\problem-python-service\Scripts\Activate.ps1
 cd E:\hangdong_pros\problem-service\services\extract_service
 pip install -r requirements.txt
 $env:EXTRACTOR_MODE = "mock"
@@ -125,7 +133,7 @@ uvicorn app.main:app --host 127.0.0.1 --port 9001
 适合加载 `Qwen3-8B + LoRA adapter` 的真实模型。
 
 ```powershell
-C:\Users\63338\venvs\problem-extract-service\Scripts\Activate.ps1
+C:\Users\63338\venvs\problem-python-service\Scripts\Activate.ps1
 cd E:\hangdong_pros\problem-service\services\extract_service
 pip install -r requirements.txt
 $env:EXTRACTOR_MODE = "hf"
